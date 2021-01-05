@@ -11,24 +11,42 @@ public class Partida {
 	//Atributos
 	private char[][] tablero;
 	private int turno;
+	Jugador jugador;
+	Jugador jugador2;
+	Bot Ia;
 	//Constructor por defecto
 	public Partida(){
 		
 		tablero=new char[3][3];
 		turno=1;
-		
+		jugador=new Jugador();
+		jugador2=new Jugador();
+		Ia=new Bot();
 	}
 	//Constructor por parámetros
-		public Partida(char[][] tablero,int turno){
+		public Partida(char[][] tablero,int turno,Jugador jugador,Jugador jugador2,Bot Ia){
 			
 			this.tablero=tablero;
 			this.turno=turno;
-			
+			this.jugador2=jugador2;
+			this.jugador=jugador;
+			this.Ia=Ia;
 		}
 	
 	
 	//Métodos fundamentales
-	
+		//Get jugador
+	public Jugador getJugador() {
+		return jugador;
+	}
+	//Get jugador2
+	public Jugador getJugador2() {
+		return jugador2;
+	}
+	//Get Ia
+	public Bot getIa() {
+		return Ia;
+	}
 	//Get tablero
 	public char[][] getTablero() {
 		return tablero;
@@ -44,6 +62,18 @@ public class Partida {
 	//Set turno
 	public void setTurno(int turno) {
 		this.turno = turno;
+	}
+	//Set jugador
+	public void setJugador(Jugador jugador) {
+		this.jugador = jugador;
+	}
+	//Set jugador2
+		public void setJugador2(Jugador jugador2) {
+			this.jugador2 = jugador2;
+		}
+	//Set jugador
+	public void setIa(Bot Ia) {
+		this.Ia = Ia;
 	}
 	
 	/*
@@ -128,11 +158,11 @@ public class Partida {
 	 * Precondición:Ninguna
 	 * Postcondición:Se trata de una función que devuelve un booleano continuar
 	 * */
-	public boolean nuevoTurno(Jugador jugador1,Partida partida){
+	public boolean nuevoTurno(Jugador jugador,Partida partida){
 		boolean continuar=true;//booleano que se devolverá para saber si se continua o no la partida 
-		System.out.println("\n"+jugador1.getNombre()+", es tu turno\nIntroduce el número de la casilla donde quieres colocar tu ficha\n");//mensaje de que es el turno del jugador
-		jugador1.colocarFicha(partida);//llamada al método para colocar ficha
-		if(comprobarSiTresEnRaya(jugador1.getFicha())){//Se comprueba si hay o no tres en raya
+		System.out.println("\n"+jugador.getNombre()+", es tu turno\nIntroduce el número de la casilla donde quieres colocar tu ficha\n");//mensaje de que es el turno del jugador
+		jugador.colocarFicha(partida);//llamada al método para colocar ficha
+		if(comprobarSiTresEnRaya(jugador.getFicha())){//Se comprueba si hay o no tres en raya
 			continuar=false;//si lo hay se cambia el valor del booleano para confirmar que no se va a seguir con la partida
 		}
 		imprimirTablero();//se imprime el tablero con la ficha colocada
@@ -146,10 +176,10 @@ public class Partida {
 	 * Precondición:Ninguna
 	 * Postcondición:Se trata de una función que devuelve un booleano continuar
 	 * */
-	public boolean nuevoTurnoCPU(Bot Ia,char ficha2,Partida partida){
+	public boolean nuevoTurnoCPU(Partida partida){
 		boolean continuar=true;//booleano que se devolverá para saber si se continua o no la partida 
 		System.out.println(Ia.getNombre()+" ha colocado, ten cuidado...\n");//mensaje de que la IA ha colocado
-		Ia.colocarFicha( ficha2, partida);//llamada al método para colocar ficha
+		Ia.colocarFicha( jugador.getFicha(), partida);//llamada al método para colocar ficha
 		if(comprobarSiTresEnRaya(Ia.getFicha())){//Se comprueba si hay o no tres en raya
 			continuar=false;//si lo hay se cambia el valor del booleano para confirmar que no se va a seguir con la partida
 		}
@@ -253,7 +283,7 @@ public class Partida {
 	 * Precondición:Ninguna
 	 * Postcondición:Se trata de un procedimiento
 	 * */
-	public void partida2Jugadores(Jugador jugador1,Jugador jugador2,Partida partida){
+	public void partida2Jugadores(Partida partida){
 		boolean turnoJ1=true,turnoJ2=true;
 		int turnoPartida=1;
 		if(decidirQuienEmpieza()){
@@ -262,10 +292,10 @@ public class Partida {
 			do{
 				System.out.println("Turno "+getTurno());//imprime el turno actual
 				if(turnoJ2) {// si debe continuar el turno
-					turnoJ1=nuevoTurno(jugador1,partida);//llamada al método de nuevo turno
+					turnoJ1=nuevoTurno(getJugador(), partida);//llamada al método de nuevo turno
 				}
 				if(turnoJ1 && getTurno()!=5) {//si el turno no es 5 y turno debe continuar
-					turnoJ2=nuevoTurno(jugador2,partida);//llamada al método de nuevo turno
+					turnoJ2=nuevoTurno(getJugador2(),partida);//llamada al método de nuevo turno
 				}
 				turnoPartida++;//aumenta el turno es decir pasamos de turno
 				setTurno(turnoPartida);//llamamos al set de turno y le pasamos por parámetros el turno actual
@@ -276,17 +306,17 @@ public class Partida {
 			do {
 				System.out.println("Turno "+getTurno());//imprime el turno actual
 				if(turnoJ1) {// si debe continuar el turno
-					turnoJ2=nuevoTurno(jugador2,partida);//llamada al método de nuevo turno
+					turnoJ2=nuevoTurno(getJugador2(),partida);//llamada al método de nuevo turno
 				}
 				if(turnoJ2 && getTurno()!=5) {//si el turno no es 5 y turno debe continuar
-					turnoJ1=nuevoTurno(jugador1,partida);//llamada al método de nuevo turno
+					turnoJ1=nuevoTurno(getJugador(),partida);//llamada al método de nuevo turno
 
 				}
 				turnoPartida++;//aumenta el turno es decir pasamos de turno
 				setTurno(turnoPartida);//llamamos al set de turno y le pasamos por parámetros el turno actual
 			}while(turnoJ1 && turnoJ2 && getTurno()<=5);//mientras ambos turnos deben continuar y el turno sea menor o igual que 5
 		}
-		decidirQuienHaGanado(jugador1, jugador2);//llamada al método decidir quien ha ganado si J1 o J2
+		decidirQuienHaGanado(jugador2);//llamada al método decidir quien ha ganado si J1 o J2
 	}
 	/*
 	 * Cabecera:public void partidaVSCPU(Jugador jugador1,Bot Ia,Partida partida)
@@ -296,7 +326,7 @@ public class Partida {
 	 * Precondición:Ninguna
 	 * Postcondición:Se trata de un pcrocedimiento 
 	 * */
-	public void partidaVSCPU(Jugador jugador1,Bot Ia,Partida partida){
+	public void partidaVSCPU(Partida partida){
 		boolean turnoJ1=true,turnoJ2=true;
 		int turnoPartida=1;
 		char randomCaracter=' ';
@@ -305,10 +335,10 @@ public class Partida {
 		randomCaracter=Character.toLowerCase(teclado.next().charAt(0));//conversión del caracter a minúscula
 		if(randomCaracter=='r'){//si es r se llamará al método para generar aleatoriamente a un carácter	
 			do{Ia.setFicha(Ia.caracterAleatorio());//llamada al método de generar un carácter aleatorio
-			}while(Ia.getFicha()==jugador1.getFicha());//mientras la ficha del jugador y la máquina sea la misma se repetira
+			}while(Ia.getFicha()==jugador.getFicha());//mientras la ficha del jugador y la máquina sea la misma se repetira
 		}else{//si no es aleatorio
 			Ia.setFicha('X');//selecciona la X como ficha
-			if(Ia.getFicha()==jugador1.getFicha()){//si el jugador a elegido la X también
+			if(Ia.getFicha()==jugador.getFicha()){//si el jugador a elegido la X también
 				Ia.setFicha('O');//selecciona O cmo ficha
 			}
 		}
@@ -318,10 +348,10 @@ public class Partida {
 			do{
 				if(turnoJ2) {// si debe continuar el turno
 					System.out.println("Turno "+getTurno());//imprime el turno actual
-					turnoJ1=nuevoTurno(jugador1,partida);//llamada al método de nuevo turno
+					turnoJ1=nuevoTurno(getJugador(),partida);//llamada al método de nuevo turno
 				}
 				if(turnoJ1 && getTurno()!=5){//si el turno no es 5 y turno debe continuar
-					turnoJ2=nuevoTurnoCPU(Ia,jugador1.getFicha(),partida);//llamada al método de nuevo turno CPU
+					turnoJ2=nuevoTurnoCPU(partida);//llamada al método de nuevo turno CPU
 				}
 				turnoPartida++;//aumenta el turno es decir pasamos de turno
 				setTurno(turnoPartida);//le pasamos al set de turno por parámetros el turno en el que nos encontramos
@@ -332,16 +362,16 @@ public class Partida {
 			do{
 				if(turnoJ1) {// si debe continuar el turno
 					System.out.println("Turno "+getTurno());//imprime el turno actual
-					turnoJ2=nuevoTurnoCPU(Ia,jugador1.getFicha(),partida);//llamada al método de nuevo turno CPU
+					turnoJ2=nuevoTurnoCPU(partida);//llamada al método de nuevo turno CPU
 				}
 				if(turnoJ2 && getTurno()!=5){// si el turno no es 5 y debe continuar el turno
-					turnoJ1=nuevoTurno(jugador1,partida);//llamada al método de nuevo turno
+					turnoJ1=nuevoTurno(getJugador(),partida);//llamada al método de nuevo turno
 				}
 				turnoPartida++;//aumenta el turno es decir pasamos de turno
 				setTurno(turnoPartida);//le pasamos al set de turno por parámetros el turno en el que nos encontramos
 			}while(turnoJ1 && turnoJ2 && getTurno()<=5);//mientras ambos turnos deben continuar y el turno sea menor o igual que 5
 		}
-		if(decidirQuienHaGanado(jugador1, Ia)){//llamada al método decidir quien ha ganado y si ha ganado la máquina
+		if(decidirQuienHaGanado(Ia)){//llamada al método decidir quien ha ganado y si ha ganado la máquina
 			Ia.comentarioSarcastico();//llamada al método comentario sarcástico
 		}
 	}
@@ -383,10 +413,10 @@ public class Partida {
 	 * Precondición:Ninguna
 	 * Postcondición:Se trata de una función que devuelve un booleano cpuGanadoraOJ2
 	 * */
-	public boolean decidirQuienHaGanado(Jugador jugador1,Jugador jugador2){
+	public boolean decidirQuienHaGanado(Jugador jugador2){
 		boolean cpuGanadoraOJ2=false;
-		if(comprobarSiTresEnRaya(jugador1.getFicha())){//comprueba si el que ha hecho tres en raya es J1 mirando su ficha
-			System.out.println("¡¡Enhorabuena "+jugador1.getNombre()+" has ganado!!");//mensaje de victoria J1
+		if(comprobarSiTresEnRaya(jugador.getFicha())){//comprueba si el que ha hecho tres en raya es J1 mirando su ficha
+			System.out.println("¡¡Enhorabuena "+jugador.getNombre()+" has ganado!!");//mensaje de victoria J1
 		}else if(comprobarSiTresEnRaya(jugador2.getFicha())){//comprueba si el que ha hecho tres en raya es J2/CPU mirando su ficha
 			System.out.println("¡¡Enhorabuena "+jugador2.getNombre()+" has ganado!!");//mensaje de victoria J2/CPU
 			cpuGanadoraOJ2=true;
