@@ -65,6 +65,7 @@ public class Jugador {
 				case 7->colocada=partida.colocarFichaEnElArray(2,0,getFicha());//llamada al método de colocar ficha en el array
 				case 8->colocada=partida.colocarFichaEnElArray(2,1,getFicha());//llamada al método de colocar ficha en el array
 				case 9->colocada=partida.colocarFichaEnElArray(2,2,getFicha());//llamada al método de colocar ficha en el array
+				default->System.out.println("Casilla incorrecta introduce una casilla del tablero que este disponible");
 			}
 		}while(colocada==false);//mientras no se  haya colocado se repetira la entrada de la ficha y llamda  posterior al método para introducirla en el array
 	}
