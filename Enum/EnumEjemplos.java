@@ -24,7 +24,7 @@ enum Nota{ SUSPENSO("Ramón",2),SUFICIENTE("Gervasio",5),BIEN("Melania",6),NOTAB
 	
 	public static void main(String[] args){
 		
-		Nota notas = Nota.valueOf("NOTABLE");
+		Nota notas = Nota.valueOf("BIEN");
 		
 		//if con enum
 		if(notas.getPuntuacion()==5){
