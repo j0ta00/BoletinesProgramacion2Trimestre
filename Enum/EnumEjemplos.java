@@ -33,7 +33,7 @@ enum Nota{ SUSPENSO("Ramón",2),SUFICIENTE("Gervasio",5),BIEN("Melania",6),NOTAB
 			System.out.println("Tienes un bien\n");
 		}
 		
-		if(notas==Nota.BIEN){
+		if(notas.equals(Nota.BIEN)){
 			
 			System.out.println(notas.getNombreAlumno()+" tiene un bien\n");
 		}
