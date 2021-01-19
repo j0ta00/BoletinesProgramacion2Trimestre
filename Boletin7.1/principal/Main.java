@@ -1,6 +1,7 @@
 package principal;
 
-import Ejercicio3.Persona;
+import ejercicio3.Persona;
+import ejercicio4.Piratagochi;
 
 public class Main {
 
@@ -8,8 +9,8 @@ public class Main {
 		Persona juanjo = new Persona();
 		Persona Antonio = new Persona("Antonio","López",23,'H');
 		juanjo.saludar(Antonio);
-		
-
+		Piratagochi p = new Piratagochi("Ramon");
+		p.dormir(12);
+		p.jugar(4);
 	}
-
 }
