@@ -14,7 +14,7 @@ public class MainCuenta {
 			respuesta=teclado.nextInt();
 			switch(respuesta){
 			case 1->{
-				if(cantidadDeCuentas>0){
+				if(cantidadDeCuentas<=0){
 					cuenta1=crearCuenta();
 					cuenta2=crearCuenta();
 					cantidadDeCuentas+=2;
@@ -22,10 +22,10 @@ public class MainCuenta {
 			}
 			case 2->{
 				if(cantidadDeCuentas>0) {
-					while(respuesta2<1 || respuesta2>2){
+					do{
 						System.out.println("A que cuenta quieres introducirlo a la cuenta 1 o 2");
 						respuesta2=teclado.nextInt();
-					}
+					}while(respuesta2<1 || respuesta2>2);
 					System.out.println("Introduce el dinero a ingresar");
 					if(respuesta2==1){
 						dinero=teclado.nextDouble();
@@ -38,10 +38,10 @@ public class MainCuenta {
 			}
 			case 3->{
 				if(cantidadDeCuentas>0) {
-					while(respuesta2<1 || respuesta2>2){
+					do{
 						System.out.println("A que cuenta quieres retirarselo a la cuenta 1 o 2");
 						respuesta2=teclado.nextInt();
-					}
+					}while(respuesta2<1 || respuesta2>2);
 					System.out.println("Introduce el dinero a retirar");
 					if(respuesta2==1){
 						dinero=teclado.nextDouble();
@@ -53,10 +53,10 @@ public class MainCuenta {
 				}
 			}
 			case 4->{if(cantidadDeCuentas>0) {
-				while(respuesta2<1 || respuesta2>2){
+				do{
 					System.out.println("De que cuenta a que cuenta quieres hacer la transferencia de la 1 a la 2(introduce 1) o de la 2 a la 1(introduce 2)");
 					respuesta2=teclado.nextInt();
-				}
+				}while(respuesta2<1 || respuesta2>2);
 				System.out.println("Introduce la cantidad de la transferencia");
 				if(respuesta2==1){
 					dinero=teclado.nextDouble();
@@ -68,10 +68,10 @@ public class MainCuenta {
 			}}
 			case 5->{
 				if(cantidadDeCuentas>0) {
-					while(respuesta2<1 || respuesta2>2){
+					do{
 						System.out.println("De que cuenta quieres calcular los beneficos de la cuenta 1 o 2");
 						respuesta2=teclado.nextInt();
-					}
+					}while(respuesta2<1 || respuesta2>2);
 					System.out.println("Introduce los meses");
 					if(respuesta2==1){
 						meses=teclado.nextInt();
@@ -100,6 +100,7 @@ public class MainCuenta {
 		System.out.println("Introduce el interés de esta cuenta");
 		interesMensual=teclado.nextDouble();
 		Cuenta cuenta = new Cuenta(iban, numeroCuenta, saldo, interesMensual);
+		System.out.println("Cuenta creada con éxito");
 		return cuenta;
 	}
 
