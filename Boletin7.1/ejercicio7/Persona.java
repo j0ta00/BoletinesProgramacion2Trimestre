@@ -127,7 +127,7 @@ public class Persona{
 	public void cerrarCuenta(){
 		if(cuenta!=null){
 			cuenta=null;
-			System.out.println("Cuenta cerra");
+			System.out.println("Cuenta cerrada");
 		}
 	}
 }
