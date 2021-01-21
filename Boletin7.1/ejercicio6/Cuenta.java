@@ -1,4 +1,4 @@
-package Ejerccio6;
+package ejercicio6;
 
 public class Cuenta {
 	//Atributos
