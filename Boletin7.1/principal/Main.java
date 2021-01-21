@@ -2,6 +2,7 @@ package principal;
 
 import ejercicio3.Persona;
 import ejercicio4.Piratagochi;
+import ejercicio5.Hora;
 
 public class Main {
 
@@ -12,5 +13,8 @@ public class Main {
 		Piratagochi p = new Piratagochi("Ramon");
 		p.dormir(12);
 		p.jugar(4);
+		Hora horaActual = new Hora(14,1,20);
+		horaActual.sumarSegundosALaHora(400);
+		System.out.println(horaActual.toString());
 	}
 }
