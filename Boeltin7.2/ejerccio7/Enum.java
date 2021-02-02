@@ -34,7 +34,7 @@ public class Enum {
 
 	}
 	public enum Hechizos{Sanacion("Sana al usuario dependiendo de la fe de este",'C','F',0.9f),EspadaDeCristal("Aumenta el poder de la característica más elevada del personaje",'A','A',0.0f),BolaDeFuego("Lanza una gran bola de fuego",'P','N',21f),
-		AzoteDeFuegDelCaos("Arte de las Llamas del Caos, que engulleron a la bruja de Izalith y a sus hijas",'P','N',28f),GranFlechaDeAlma("Dispara una Gran flecha de Alma",'A','I',1.4f),AlientoDeDragon("Antiguo poder de los dragones ancestrales",'A','I',2.1f);
+		AzoteDeFuegoDelCaos("Arte de las Llamas del Caos, que engulleron a la bruja de Izalith y a sus hijas",'P','N',28f),GranFlechaDeAlma("Dispara una Gran flecha de Alma",'A','I',1.4f),AlientoDeDragon("Antiguo poder de los dragones ancestrales",'A','I',2.1f);
 		//Atributos de los enumerados
 		private String descripcion;
 		private char tipo;
