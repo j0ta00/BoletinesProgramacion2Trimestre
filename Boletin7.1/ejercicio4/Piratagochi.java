@@ -88,7 +88,7 @@ public class Piratagochi {
 			setEnergia(energia-horasJugando);
 		}
 	}
-	public String getNecesidades(){
+	public void getNecesidades(){
 		String necesidad="";
 		if(energia<5){
 			System.out.println("La energía de "+nombre+" es muy baja dejale descansar");
@@ -97,6 +97,5 @@ public class Piratagochi {
 		}else if(nivelFelicidad<5){
 			System.out.println("El nivel de felicidad de "+nombre+" esta bajo juega un poco con él");
 		}
-		return necesidad;	
 	}
 }

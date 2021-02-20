@@ -2,6 +2,7 @@ package ejercicio7;
 import java.util.Scanner;
 public class Cuenta {
 	//Atributos
+	Scanner teclado= new Scanner(System.in);
 	private String iban;
 	private int numeroCuenta;
 	private double saldo;
@@ -16,6 +17,7 @@ public class Cuenta {
 	}
 	//Métodos fundamentales
 	//Getters
+	
 	public String getIban() {
 		return iban;
 	}
