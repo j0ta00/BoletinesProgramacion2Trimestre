@@ -1,3 +1,7 @@
+package cribaEratostenes;
+
+import java.util.Scanner;
+
 /**
  * @author jjmza<br>
  * <p>
@@ -22,7 +26,13 @@
  * */
 public class CribaEratostenes{
 	public static void main(String[] args) {
-		cribaEratostenes(30);
+		int numero=0;
+		Scanner teclado = new Scanner(System.in);
+		while(numero<2 || numero>9999){
+			System.out.println("Introduce el número hasta el que cribaremos, recuerda no debe ser menor que 2 ni mayor que 9999");
+			numero=teclado.nextInt();
+		}
+		cribaEratostenes(numero);
 	}
 	/**
 	 * @author jjmza<br>
