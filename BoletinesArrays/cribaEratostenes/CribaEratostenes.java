@@ -1,16 +1,13 @@
 package cribaEratostenes;
-
-import java.util.Scanner;
-
 /**
  * @author jjmza<br>
  * <p>
  * Nombre de la clase:CribaEratostenes<br>
- * Proposito: Se trata de una clase estática compuesta por varios métodos relacionados con la criba de Eratóstenes y funcionalidades con
- * números primos<br>
- * Propiedades:Ninguna se trata de una clase de utilidad que posee el método de la criba de eratostenes<br>
- * Métodos Accesores:Carece de estos<br>
- * Métodos Adicionales:
+ * Proposito: Se trata de una clase estÃ¡tica compuesta por varios mÃ©todos relacionados con la criba de EratÃ³stenes y funcionalidades con
+ * nÃºmeros primos<br>
+ * Propiedades:Ninguna se trata de una clase de utilidad que posee el mÃ©todo de la criba de eratostenes<br>
+ * MÃ©todos Accesores:Carece de estos<br>
+ * MÃ©todos Adicionales:
  * </p>
  * 	<table>
 * 		<tr> 
@@ -28,15 +25,15 @@ public class CribaEratostenes{
 	/**
 	 * @author jjmza<br>
 	 * Cabecera:private static void imprimirEratostenes(int[] array)<br>
-	 * Proposito:Se trata de un método que imprime un array de números<br>
-	 * Precondición:El array que se le pasa por parámetros no debe contener nulos<br>
-	 * Postcondición:Se trata de un procedimiento que solamente imprime por pantalla<br>
+	 * Proposito:Se trata de un mÃ©todo que imprime un array de nÃºmeros<br>
+	 * PrecondiciÃ³n:El array que se le pasa por parÃ¡metros no debe contener nulos<br>
+	 * PostcondiciÃ³n:Se trata de un procedimiento que solamente imprime por pantalla<br>
 	 *  @parama int[] array
 	 *  @return Nada, solamente imprime
 	 *  
 	 */
 	private static void imprimirEratostenes(int[] array){
-		System.out.print("La lista de números primos tras el cribado es: ");
+		System.out.print("La lista de nÃºmeros primos tras el cribado es: ");
 		for(int i:array){
 			if(i!=0){
 			System.out.print(" "+i+" ");	
@@ -47,12 +44,12 @@ public class CribaEratostenes{
 	 * @author jjmza<br>
 	 * 
 	 * Cabecera:private static int[] llenarArrayDeNumerosConsecutivos(int numeros)<br>
-	 * Proposito:Se trata de un método que llena un array de números consecutivos<br>
-	 * Precondición:El número pasado por parámetros debe ser positivo y mayor o igual que 2<br>
-	 * Postcondición:Se trata de una función que llena un array de números consecutivos, tantos como le hayamos 
-	 * indicado por parámetros<br>
+	 * Proposito:Se trata de un mÃ©todo que llena un array de nÃºmeros consecutivos<br>
+	 * PrecondiciÃ³n:El nÃºmero pasado por parÃ¡metros debe ser positivo y mayor o igual que 2<br>
+	 * PostcondiciÃ³n:Se trata de una funciÃ³n que llena un array de nÃºmeros consecutivos, tantos como le hayamos 
+	 * indicado por parÃ¡metros<br>
 	 *  @parama int numero
-	 *  @return int[] array lleno de números consecutivos
+	 *  @return int[] array lleno de nÃºmeros consecutivos
 	 *  
 	 */
 	private static int[] llenarArrayDeNumerosConsecutivos(int numero){
@@ -65,13 +62,13 @@ public class CribaEratostenes{
 	/**
 	 * @author jjmza<br>
 	 * Cabecera:public static void cribaEratostenes(int numero)<br>
-	 * Proposito:Se trata de un método que realiza el proceso de cribado de eratostenes para
+	 * Proposito:Se trata de un mÃ©todo que realiza el proceso de cribado de eratostenes para
 	 * conseguir los numeros primos desde 2 hasta int numero<br>
-	 * Precondición:El número pasado por parámetros debe ser positivo y mayor o igual que 2<br>
-	 * Postcondición:Se trata de un procedimiento que realiza la criba de eratostenes a una colección de
+	 * PrecondiciÃ³n:El nÃºmero pasado por parÃ¡metros debe ser positivo y mayor o igual que 2<br>
+	 * PostcondiciÃ³n:Se trata de un procedimiento que realiza la criba de eratostenes a una colecciÃ³n de
 	 * enteros<br>
 	 *  @parama int numeros
-	 *  @return Nada solamente realiza el proceso de cribado y llama a otros métodos auxiliares privados
+	 *  @return Nada solamente realiza el proceso de cribado y llama a otros mÃ©todos auxiliares privados
 	 *  
 	 */
 	public static void cribaEratostenes(int numero){
